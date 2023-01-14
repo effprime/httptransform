@@ -20,12 +20,10 @@ func (t *ClientRequestTransformer) TransformRequest(req *http.Request) (*http.Re
         return req, httptransform.NewTransformError(err.Error(), http.StatusBadRequest).WithExternal("could not read client request")
     }
 
-    apiRequest := APIRequest{
+    output, err := json.Marshal(&APIRequest{
         Name:    clientRequest.Name,
         Address: fmt.Sprintf("%v %v, %v", clientRequest.Number, clientRequest.Street, clientRequest.City),
-    }
-
-    output, err := json.Marshal(apiRequest)
+    })
     if err != nil {
         return req, httptransform.NewTransformError(err.Error(), http.StatusInternalServerError).WithExternal("could not serialize transformed response")
     }
