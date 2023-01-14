@@ -41,15 +41,15 @@ Then attach it to the middleware:
 
 ```go
 func main() {
-	r := mux.NewRouter()
+    r := mux.NewRouter()
 
     // Attach middleware to some handler that accepts transformed request
-	handler := httptransform.Transform(&httptransform.TransformOptions{
-		RequestTransformer: &ClientRequestTransformer{},
-	})(http.HandlerFunc(HandleAPIRequest))
+    handler := httptransform.Transform(&httptransform.TransformOptions{
+        RequestTransformer: &ClientRequestTransformer{},
+    })(http.HandlerFunc(HandleAPIRequest))
 
-	r.Handle("/save", handler).Methods(http.MethodPost)
-	http.ListenAndServe(":8000", r)
+    r.Handle("/save", handler).Methods(http.MethodPost)
+    http.ListenAndServe(":8000", r)
 }
 ```
 
