@@ -45,6 +45,7 @@ func (o *ResponseTransformerWriterOptions) fillDefaults() {
 
 // NewResponseTransformWriter returns a new response transforming http.ResponseWriter.
 func NewResponseTransformWriter(opts *ResponseTransformerWriterOptions) *responseTransformWriter {
+	opts.fillDefaults()
 	return &responseTransformWriter{
 		successTansformer: opts.SuccessTransformer,
 		errorTransformer:  opts.ErrorTransformer,
