@@ -30,7 +30,6 @@ func Transform(opts *TransformOptions) mux.MiddlewareFunc {
 				opts.getErrorHandler().Handle(err, w, req)
 				return
 			}
-
 			next.ServeHTTP(NewResponseTransformWriter(&ResponseTransformerWriterOptions{
 				SuccessTransformer: opts.SuccessResponseTransformer,
 				ErrorTransformer:   opts.ErrorResponseTransformer,
