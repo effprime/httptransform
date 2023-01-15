@@ -43,6 +43,7 @@ func HandleAPIRequest(w http.ResponseWriter, req *http.Request) {
 	body := APIRequest{}
 	json.NewDecoder(req.Body).Decode(&body)
 	db.SaveRequest(body.Name, body.Address)
+	w.Write([]byte("request saved!"))
 }
 
 type ClientRequestTransformer struct{}
