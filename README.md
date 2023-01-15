@@ -52,6 +52,6 @@ func main() {
 ```
 
 
-For more complete examples, see `examples/`
+For more complete example, see `examples/`
 
 
